@@ -208,5 +208,4 @@ def find_path():
     
 if __name__ == '__main__':
     # save_geojson_file_to_mongodb('./mapx.geojson')
-    app.run(host="0.0.0.0", port=5000)
     app.run(debug=True)
