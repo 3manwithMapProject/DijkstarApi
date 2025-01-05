@@ -15,15 +15,6 @@ client = MongoClient("mongodb+srv://peeradol75:peeradon516@geo-database.3gddu.mo
 db = client['geojson_db']
 collection = db['map_data']
 
-def save_geojson_file_to_mongodb(file_path):
-    try:
-        with open(file_path, 'r', encoding='utf-8') as geojson_file:
-            geojson_data = json.load(geojson_file)
-            collection.insert_one(geojson_data)
-            print("GeoJSON data saved to MongoDB successfully.")
-    except Exception as e:
-        print(f"Error while saving GeoJSON to MongoDB: {e}")
-
 # คำนวณระยะทางระหว่างพิกัด
 def calculate_distance(coord1, coord2):
     R = 6371  # Radius of Earth in km
@@ -207,6 +198,5 @@ def find_path():
         return jsonify({"error": str(e)}), 500
     
 if __name__ == '__main__':
-    # save_geojson_file_to_mongodb('./mapx.geojson')
     app.run(host="0.0.0.0", port=5000)
     app.run(debug=True)
